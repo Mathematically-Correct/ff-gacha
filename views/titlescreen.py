@@ -1,12 +1,13 @@
 """
-Holds the Main Menu Screen.
+Holds the Title Screen.
 """
 import pygame
-import views.screensettings as settings
 from views.scene import Scene
+import views.screensettings as settings
+from views.mainmenu import MainMenu
 
 
-class MainMenu(Scene):
+class TitleScene(Scene):
     def __init__(self):
         super().__init__()
 
@@ -14,15 +15,15 @@ class MainMenu(Scene):
         for event in events:
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_SPACE:
-                    pass
+                    self.next_scene = MainMenu()
 
     def update(self):
         pass
 
     def render(self):
-        settings.screen.fill(settings.BLACK)
-        text = settings.font_xl.render("Main Menu", 1, settings.WHITE)
+        settings.screen.fill(settings.BACKGROUND)
+        text = settings.font_xl.render(settings.TITLE, 1, settings.WHITE)
         rect = text.get_rect()
         rect.centerx = settings.SCREEN_WIDTH // 2
-        rect.centery = settings.SCREEN_HEIGHT // 4
+        rect.centery = settings.SCREEN_HEIGHT // 2
         settings.screen.blit(text, rect)
