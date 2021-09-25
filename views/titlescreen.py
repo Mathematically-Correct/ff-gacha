@@ -10,7 +10,8 @@ from views.mainmenu import MainMenu
 class TitleScene(Scene):
     def __init__(self):
         super().__init__()
-        self.button = pygame.Rect(375, 450, 50, 50)
+        self.enter_text = settings.font_sm.render("Enter Here", 1, settings.WHITE)
+        self.enter_button = self.enter_text.get_rect()
 
     def process_input(self, events, pressed_keys):
         for event in events:
@@ -23,7 +24,7 @@ class TitleScene(Scene):
 
                 # checks if mouse position is over the button
 
-                if self.button.collidepoint(mouse_pos):
+                if self.enter_button.collidepoint(mouse_pos):
                     # prints current location of mouse
                     self.next_scene = MainMenu()
 
@@ -37,4 +38,6 @@ class TitleScene(Scene):
         rect.centerx = settings.SCREEN_WIDTH // 2
         rect.centery = settings.SCREEN_HEIGHT // 2
         settings.screen.blit(text, rect)
-        pygame.draw.rect(settings.screen, [255, 0, 0], self.button)
+        self.enter_button.centerx = settings.SCREEN_WIDTH // 2
+        self.enter_button.centery = settings.SCREEN_HEIGHT // 1.5
+        settings.screen.blit(self.enter_text, self.enter_button)
