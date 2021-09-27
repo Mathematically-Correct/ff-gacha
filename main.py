@@ -29,7 +29,8 @@ class Game:
                     self.active_scene.terminate()
                 else:
                     filtered_events.append(event)
-
+                if event.type == pygame.VIDEORESIZE:
+                    self.active_scene.update_screen(event.w, event.h)
             # Manage scene
             self.active_scene.process_input(filtered_events, pressed_keys)
             self.active_scene.update()
