@@ -1,6 +1,8 @@
 """
 Basic Scene Class File.
 """
+import pygame
+import views.screensettings as settings
 
 
 class Scene():
@@ -18,3 +20,7 @@ class Scene():
 
     def terminate(self):
         self.next_scene = None
+
+    def update_screen(self, new_w, new_h):
+        settings.SCREEN_WIDTH, settings.SCREEN_HEIGHT = new_w, new_h
+        settings.screen = pygame.display.set_mode((settings.SCREEN_WIDTH, settings.SCREEN_HEIGHT), pygame.RESIZABLE)
