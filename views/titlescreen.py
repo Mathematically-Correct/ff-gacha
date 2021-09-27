@@ -8,6 +8,10 @@ from views.mainmenu import MainMenu
 
 
 class TitleScene(Scene):
+    """
+    Title Screen.
+    Implemented Events: Button for Menu
+    """
     def __init__(self):
         super().__init__()
         self.enter_text = settings.font_sm.render("Enter Here", 1, settings.WHITE)
@@ -22,10 +26,8 @@ class TitleScene(Scene):
             if event.type == pygame.MOUSEBUTTONDOWN:
                 mouse_pos = event.pos  # gets mouse position
 
-                # checks if mouse position is over the button
-
                 if self.enter_button.collidepoint(mouse_pos):
-                    # prints current location of mouse
+                    #If Enter button is clicked, goes to Main Menu
                     self.next_scene = MainMenu()
 
     def update(self):

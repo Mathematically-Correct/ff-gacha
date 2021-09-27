@@ -6,6 +6,10 @@ import views.screensettings as settings
 
 
 class Scene():
+    """
+    Is the base class for the Scenes
+    Normally each scene is an object/subclass of this.
+    """
     def __init__(self):
         self.next_scene = self
 

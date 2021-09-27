@@ -7,6 +7,11 @@ from views.scene import Scene
 
 
 class MainMenu(Scene):
+    """
+    Main Menu Screen.
+    Implemented Events: None but has one for if Space is pressed.
+    To-Do: Implement Events for Play, Settings, and Exit Buttons.
+    """
     def __init__(self):
         super().__init__()
 
