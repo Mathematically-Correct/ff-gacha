@@ -25,13 +25,17 @@ The Fonts that are utilized for game.
 TITLE_FONT = 'garamond'
 DEFAULT_FONT = None
 
-# Make window
+"""
+Initiates the Window
+"""
 pygame.init()
 screen = pygame.display.set_mode([SCREEN_WIDTH, SCREEN_HEIGHT], pygame.RESIZABLE)
 pygame.display.set_caption(TITLE)
 clock = pygame.time.Clock()
 
-# Load assets
+"""
+Loads the Fonts
+"""
 font_sm = pygame.font.SysFont(DEFAULT_FONT, 24)
 font_md = pygame.font.SysFont(DEFAULT_FONT, 32)
 font_xl = pygame.font.SysFont(TITLE_FONT, 96)
