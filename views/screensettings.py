@@ -17,6 +17,7 @@ The Different Main Colors of Game
 """
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
+RED = (83, 19, 30)
 BACKGROUND = (136, 13, 30)
 
 """
