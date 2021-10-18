@@ -4,6 +4,7 @@ Holds the Display Character Screen which shows all the different sprites
 import pygame
 from views.scene import Scene
 import views.screensettings as settings
+import data.character as characters
 
 
 class DisplayCharacters(Scene):
@@ -13,6 +14,7 @@ class DisplayCharacters(Scene):
     """
     def __init__(self):
         super().__init__()
+        self.Rand = characters.Rand()
 
     def process_input(self, events, pressed_keys):
         for event in events:
@@ -23,7 +25,7 @@ class DisplayCharacters(Scene):
             if event.type == pygame.MOUSEBUTTONDOWN:
                 mouse_pos = event.pos  # gets mouse position
 
-                if self.enter_button.collidepoint(mouse_pos):
+                if self.Rand.rect.collidepoint(mouse_pos):
                     #If Enter button is clicked, goes to Main Menu
                     pass
 
@@ -37,3 +39,4 @@ class DisplayCharacters(Scene):
         rect.centerx = settings.SCREEN_WIDTH // 2
         rect.centery = settings.SCREEN_HEIGHT // 2
         settings.screen.blit(text, rect)
+        settings.screen.blit(self.Rand.image, self.Rand.rect)
