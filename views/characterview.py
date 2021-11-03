@@ -12,8 +12,8 @@ import data.character as characters
 
 class DisplayCharacterView(Scene):
     """
-    Display Characters Screen.
-    Implemented Events: Button for Menu
+    Display Specific Character View Screen.
+    Implemented Events: Button to go back to main Character screen
     """
 
     def __init__(self, character):

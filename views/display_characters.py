@@ -13,7 +13,7 @@ import data.character as characters
 class DisplayCharacters(Scene):
     """
     Display Characters Screen.
-    Implemented Events: Button for Menu
+    Implemented Events: Button for Menu, Button to view Specific Character screen
     """
 
     def __init__(self):
