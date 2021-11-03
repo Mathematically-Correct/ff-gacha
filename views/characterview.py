@@ -4,21 +4,22 @@ Holds the Display Character Screen which shows all the different sprites
 import pygame
 
 import views.mainmenu
-import views.characterview
 from views.scene import Scene
 import views.screensettings as settings
+import views.display_characters
 import data.character as characters
 
 
-class DisplayCharacters(Scene):
+class DisplayCharacterView(Scene):
     """
     Display Characters Screen.
     Implemented Events: Button for Menu
     """
 
-    def __init__(self):
+    def __init__(self, character):
         super().__init__()
-        self.Rand = characters.Rand()
+        self.sprite = character
+
         self.back_text = settings.font_sm.render("Go Back", 1, settings.WHITE)
         self.back_button = self.back_text.get_rect()
 
@@ -31,11 +32,8 @@ class DisplayCharacters(Scene):
             if event.type == pygame.MOUSEBUTTONDOWN:
                 mouse_pos = event.pos  # gets mouse position
 
-                if self.Rand.rect.collidepoint(mouse_pos):
-                    self.next_scene = views.characterview.DisplayCharacterView(self.Rand)
-
                 if self.back_button.collidepoint(mouse_pos):
-                    self.next_scene = views.mainmenu.MainMenu()
+                    self.next_scene = views.display_characters.DisplayCharacters()
 
     def update(self):
         pass
@@ -43,4 +41,9 @@ class DisplayCharacters(Scene):
     def render(self):
         settings.screen.fill(settings.BACKGROUND)
         settings.screen.blit(self.back_text, self.back_button)
-        settings.screen.blit(self.Rand.image, self.Rand.rect)
+        settings.screen.blit(self.sprite.image, self.sprite.rect)
+        sprite_name = settings.font_xl.render(self.sprite.name, 1, settings.BLACK)
+        sprite_name_rect = sprite_name.get_rect()
+        sprite_name_rect.centerx = settings.SCREEN_WIDTH // 1.65
+        sprite_name_rect.centery = settings.SCREEN_HEIGHT // 1.1
+        settings.screen.blit(sprite_name, sprite_name_rect)
